@@ -87,12 +87,9 @@ def render_sidebar() -> None:
     st.sidebar.markdown(f'<div class="profile-wrap"><img src="{get_profile_image_src()}" alt="Daaniyal Khan" /></div>', unsafe_allow_html=True)
     st.sidebar.markdown("### Contact")
     st.sidebar.markdown("- **LinkedIn:** [Daaniyal Khan](https://www.linkedin.com)")
-    st.sidebar.markdown("- **Email:** daaniyal@example.com")
-    if os.path.exists(CV_FILENAME):
-        with open(CV_FILENAME, "rb") as f:
-             st.sidebar.download_button("Download CV", f, CV_FILENAME, "text/html", use_container_width=True)
-    else:
-        st.sidebar.info(f"Place `{CV_FILENAME}` in this folder to enable CV download.")
+    st.sidebar.markdown("- **Email:** daaniyalkh@gmail.com")
+    st.sidebar.markdown("- **Webseite:** www.daaniyalkhan.com")
+    
 
 def main() -> None:
     render_sidebar()
