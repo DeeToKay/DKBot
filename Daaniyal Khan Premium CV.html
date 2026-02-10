@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daaniyal A. Khan - Sales & Distribution Enablement Leader</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 8.5in;
+            height: 11in;
+            background: white;
+            margin: 20px auto;
+            display: flex;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            page-break-after: always;
+        }
+
+        /* LEFT SIDEBAR */
+        .sidebar {
+            width: 2.2in;
+            background: #1a1a1a;
+            color: white;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 4px;
+            background: #333;
+            margin-bottom: 10px;
+            object-fit: cover;
+            border: 3px solid #b8956a;
+        }
+
+        .name {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.3;
+            letter-spacing: 0.5px;
+        }
+
+        .title {
+            font-size: 11px;
+            color: #b8956a;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 8px;
+        }
+
+        .section-title {
+            font-size: 11px;
+            font-weight: 700;
+            color: #b8956a;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #b8956a;
+            padding-bottom: 8px;
+        }
+
+        .sidebar-item {
+            font-size: 11px;
+            line-height: 1.6;
+            word-break: break-word;
+        }
+
+        .sidebar-item strong {
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .sidebar-item a {
+            color: #b8956a;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .sidebar-item a:hover {
+            text-decoration: underline;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background: #2a2a2a;
+            padding: 4px 8px;
+            margin: 3px 3px 3px 0;
+            border-radius: 2px;
+            font-size: 10px;
+            border: 1px solid #b8956a;
+            color: #fff;
+        }
+
+        /* MAIN CONTENT */
+        .content {
+            flex: 1;
+            padding: 30px 28px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 15px;
+        }
+
+        .header-left h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .header-left p {
+            font-size: 11px;
+            color: #666;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .header-right {
+            text-align: right;
+            font-size: 10px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .header-right a {
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        .header-right a:hover {
+            text-decoration: underline;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            font-size: 10px;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .grid-column {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .experience-block {
+            margin-bottom: 12px;
+        }
+
+        .exp-title {
+            font-weight: 700;
+            font-size: 11px;
+            margin-bottom: 2px;
+        }
+
+        .exp-company {
+            font-size: 10px;
+            color: #b8956a;
+            margin-bottom: 3px;
+            font-weight: 600;
+        }
+
+        .exp-details {
+            font-size: 9px;
+            color: #666;
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+
+        .exp-bullets {
+            font-size: 9px;
+            margin-left: 12px;
+            line-height: 1.5;
+            color: #444;
+        }
+
+        .exp-bullets li {
+            margin-bottom: 3px;
+        }
+
+        .edu-block {
+            margin-bottom: 10px;
+        }
+
+        .edu-degree {
+            font-weight: 700;
+            font-size: 10px;
+            margin-bottom: 2px;
+        }
+
+        .edu-school {
+            font-size: 9px;
+            color: #666;
+            margin-bottom: 1px;
+        }
+
+        .edu-gpa {
+            font-size: 9px;
+            color: #b8956a;
+            font-weight: 600;
+        }
+
+        .section-label {
+            font-weight: 700;
+            font-size: 11px;
+            color: #1a1a1a;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #b8956a;
+            padding-bottom: 6px;
+        }
+
+        .achievement {
+            background: #f9f9f9;
+            padding: 8px;
+            border-left: 3px solid #b8956a;
+            margin-bottom: 8px;
+            font-size: 9px;
+            line-height: 1.5;
+        }
+
+        .achievement strong {
+            color: #1a1a1a;
+        }
+
+        .lang-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+            font-size: 9px;
+        }
+
+        .lang-level {
+            color: #b8956a;
+            font-weight: 600;
+        }
+
+        /* PAGE 2 STYLES */
+        .container-page2 {
+            max-width: 8.5in;
+            height: 11in;
+            background: white;
+            margin: 20px auto;
+            display: flex;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .sidebar-page2 {
+            width: 2.2in;
+            background: #1a1a1a;
+            color: white;
+            padding: 30px 20px;
+        }
+
+        .content-page2 {
+            flex: 1;
+            padding: 30px 28px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .full-width {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            font-size: 10px;
+        }
+
+        .highlight-box {
+            background: #1a1a1a;
+            color: white;
+            padding: 12px;
+            border-radius: 2px;
+            margin-bottom: 15px;
+            font-size: 10px;
+            line-height: 1.6;
+        }
+
+        .highlight-box strong {
+            color: #b8956a;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* PRINT STYLES */
+        @media print {
+            body {
+                background: white;
+                margin: 0;
+                padding: 0;
+            }
+            .container, .container-page2 {
+                margin: 0;
+                box-shadow: none;
+            }
+        }
+
+        /* SCROLLBAR */
+        .content::-webkit-scrollbar {
+            width: 6px;
+        }
+        .content::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .content::-webkit-scrollbar-thumb {
+            background: #b8956a;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="container">
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <!-- PHOTO PLACEHOLDER -->
+        <div style="text-align: center;">
+            <div class="profile-img" style="background: linear-gradient(135deg, #b8956a 0%, #1a1a1a 100%); display: flex; align-items: center; justify-content: center; color: #555; font-size: 12px;">
+                [Photo]
+            </div>
+            <div class="name">DAANIYAL A. KHAN</div>
+            <div class="title">Sales & Distribution<br>Enablement Leader</div>
+        </div>
+
+        <!-- CONTACT -->
+        <div>
+            <div class="section-title">CONTACT</div>
+            <div class="sidebar-item">
+                <strong>📞 Phone</strong>
+                +49 176 729 437 07
+            </div>
+            <div class="sidebar-item">
+                <strong>✉ Email</strong>
+                <a href="mailto:daaniyalkhan@yahoo.de">daaniyalkhan@yahoo.de</a>
+            </div>
+            <div class="sidebar-item">
+                <strong>💼 LinkedIn</strong>
+                <a href="https://linkedin.com/in/daaniyal-khan-667813149" target="_blank">daaniyal-khan-667813149</a>
+            </div>
+            <div class="sidebar-item">
+                <strong>📍 Location</strong>
+                Wuppertal, DE | Remote-First
+            </div>
+            <div class="sidebar-item">
+                <strong>🌍 Availability</strong>
+                Immediate | EMEA/APAC
+            </div>
+        </div>
+
+        <!-- CORE SKILLS -->
+        <div>
+            <div class="section-title">CORE SKILLS</div>
+            <div style="display: flex; flex-wrap: wrap; gap: 5px;">
+                <span class="skill-tag">Distribution Strategy</span>
+                <span class="skill-tag">Sales Enablement</span>
+                <span class="skill-tag">Digital Transformation</span>
+                <span class="skill-tag">Team Building</span>
+                <span class="skill-tag">Process Optimization</span>
+                <span class="skill-tag">AI/ML for Sales</span>
+                <span class="skill-tag">Change Leadership</span>
+                <span class="skill-tag">CRM & Tech Stack</span>
+            </div>
+        </div>
+
+        <!-- LANGUAGES -->
+        <div>
+            <div class="section-title">LANGUAGES</div>
+            <div class="lang-item">
+                <span>🇩🇪 German</span>
+                <span class="lang-level">Native</span>
+            </div>
+            <div class="lang-item">
+                <span>🇬🇧 English</span>
+                <span class="lang-level">Fluent</span>
+            </div>
+            <div class="lang-item">
+                <span>🇪🇸 Spanish</span>
+                <span class="lang-level">Business</span>
+            </div>
+            <div class="lang-item">
+                <span>🇮🇳 Hindi / Urdu</span>
+                <span class="lang-level">Native</span>
+            </div>
+            <div class="lang-item">
+                <span>🇫🇷 French</span>
+                <span class="lang-level">Basic</span>
+            </div>
+        </div>
+
+        <!-- CREDENTIALS -->
+        <div>
+            <div class="section-title">CREDENTIALS</div>
+            <div class="sidebar-item">
+                <strong>MBA + AI for Business</strong>
+                ENEB | 2024–2025<br>GPA: 9.53/10
+            </div>
+            <div class="sidebar-item">
+                <strong>Diploma, Innovation & Project Management</strong>
+                ENEB | 2025
+            </div>
+            <div class="sidebar-item">
+                <strong>BBA, Business Administration</strong>
+                Kentsville University | 2016<br>GPA: 3.90
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="content">
+        <div class="header-top">
+            <div class="header-left">
+                <h1>DAANIYAL A. KHAN</h1>
+                <p>Sales & Distribution Enablement | Digital Transformation | Insurance & FinServ</p>
+            </div>
+            <div class="header-right">
+                <strong>Target Compensation</strong><br>
+                €350,000+ netto p.a.<br><br>
+                <strong>Availability</strong><br>
+                Immediate | Remote-First<br><br>
+                <strong>Relocation</strong><br>
+                EMEA / APAC Ready
+            </div>
+        </div>
+
+        <div class="content-grid">
+            <!-- LEFT COLUMN: WORK EXPERIENCE -->
+            <div class="grid-column">
+                <div>
+                    <div class="section-label">WORK EXPERIENCE</div>
+
+                    <div class="experience-block">
+                        <div class="exp-title">Director, Onboarding & Recruiting</div>
+                        <div class="exp-company">BARMENIA KRANKENVERSICHERUNG AG | Wuppertal, DE</div>
+                        <div class="exp-details">10/2023–03/2025 | 7+ Years with Organization</div>
+                        <ul class="exp-bullets">
+                            <li><strong>Led team of 4 direct reports;</strong> owned end-to-end onboarding strategy for 200+ distributor network</li>
+                            <li><strong>Designed process-driven onboarding framework;</strong> reduced time-to-productivity 30% via skill mapping & digitized workflows</li>
+                            <li><strong>Standardized partner compliance & quality;</strong> improved retention metrics across regions</li>
+                            <li><strong>Coordinated recruitment campaigns;</strong> consistent partner acquisition & competency assurance</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-block">
+                        <div class="exp-title">Head, Sales Development Center (Kompetenzcenter)</div>
+                        <div class="exp-company">BARMENIA KRANKENVERSICHERUNG AG</div>
+                        <div class="exp-details">01/2023–09/2023</div>
+                        <ul class="exp-bullets">
+                            <li><strong>Established capability program</strong> for 200+ sales partners; designed training modules & competency assessments</li>
+                            <li><strong>Coached leadership teams</strong> on sales methodology, digital tools & transformation</li>
+                            <li><strong>Impact:</strong> Improved sales organization productivity & adoption of digital platforms</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-block">
+                        <div class="exp-title">Digital Consultant & Sales Transformation</div>
+                        <div class="exp-company">BARMENIA KRANKENVERSICHERUNG AG</div>
+                        <div class="exp-details">10/2018–12/2022</div>
+                        <ul class="exp-bullets">
+                            <li><strong>Strategic advisor to C-suite</strong> on sales transformation, digitalization & process optimization</li>
+                            <li><strong>Architected Digital Sales Organization (DVO):</strong> New greenfield distribution channel via online lead generation, video consultation & digital closures—eliminating recruiting & infrastructure overhead</li>
+                            <li><strong>Led BVO-Portal rollout:</strong> Enterprise sales cockpit (dashboards, CRM, automation, analytics) serving 500+ users; improved data visibility &amp; sales process efficiency</li>
+                            <li><strong>Established Competence Center for Sales Development:</strong> KI-powered lead generation, tool adoption (Yext, VorFina, fino.analytics), recruiting automation (Talention)</li>
+                            <li><strong>Managed major events:</strong> Jahresauftakt &amp; Jahresabschluss for 500+ stakeholders; change communications &amp; engagement</li>
+                            <li><strong>Process diagnostics:</strong> Identified bottlenecks; quantified optimization opportunities for management implementation</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-block">
+                        <div class="exp-title">Branch Manager, Marketing &amp; Sales</div>
+                        <div class="exp-company">ACTIVATE GMBH | Hannover, DE</div>
+                        <div class="exp-details">12/2015–12/2017 | 2 Years</div>
+                        <ul class="exp-bullets">
+                            <li><strong>Built Hannover branch from greenfield;</strong> recruited &amp; managed multi-tier team; achieved staffing &amp; revenue targets within 12 months</li>
+                            <li><strong>Owned P&amp;L responsibility;</strong> managed quarterly planning, revenue targets, cost discipline</li>
+                            <li><strong>Ratings:</strong> "Exemplary leader" | "Extremely valuable contributor"</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-block">
+                        <div class="exp-title">Sales Team Lead, Telesales</div>
+                        <div class="exp-company">SCHLÜTERSCHE MARKETING SERVICES | Hannover, DE</div>
+                        <div class="exp-details">04/2014–12/2015 | 1.5 Years</div>
+                        <ul class="exp-bullets">
+                            <li><strong>Led inside sales team;</strong> 150+ prospects/month | Print &amp; digital media solutions</li>
+                            <li><strong>Drove acquisition &amp; retention;</strong> consistent quota attainment</li>
+                            <li><strong>Top performer;</strong> regional sales organization</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: ACHIEVEMENTS, EDUCATION, REFERENCES -->
+            <div class="grid-column">
+                <div>
+                    <div class="section-label">KEY ACHIEVEMENTS</div>
+
+                    <div class="achievement">
+                        <strong>🚀 Digital Sales Organization (DVO)</strong><br>
+                        Architected &amp; launched new greenfield distribution channel enabling online lead generation, video-based consultations &amp; digital product closures. Eliminated recruiting overhead &amp; field infrastructure costs while maintaining client relationships.
+                    </div>
+
+                    <div class="achievement">
+                        <strong>💻 BVO-Portal (Enterprise Sales Cockpit)</strong><br>
+                        Product Owner &amp; Change Lead for platform serving 500+ sales users. Unified dashboard with CRM, analytics, automation &amp; real-time sales metrics—improving visibility &amp; decision velocity across organization.
+                    </div>
+
+                    <div class="achievement">
+                        <strong>🎯 Competence Center for Sales Development</strong><br>
+                        Founded strategic capability center focusing on AI/KI applications (Barmenia-GPT, fino.insights), lead management (Talention), online presence optimization (Yext), &amp; standardized sales consulting software (VorFina).
+                    </div>
+
+                    <div class="achievement">
+                        <strong>👥 Onboarding &amp; Recruitment Excellence</strong><br>
+                        Designed &amp; deployed process-driven onboarding framework across 200+ partner network. Reduced time-to-productivity 30% through skill mapping, digitized workflows &amp; automated partner compliance checks.
+                    </div>
+                </div>
+
+                <div>
+                    <div class="section-label">EDUCATION</div>
+
+                    <div class="edu-block">
+                        <div class="edu-degree">MBA + Master in AI for Business</div>
+                        <div class="edu-school">Universidad Internacional Isabel I de Castilla / ENEB | 2024–2025</div>
+                        <div class="edu-gpa">1,800 hours | GPA: 9.53/10</div>
+                        <div style="font-size: 9px; color: #666; margin-top: 2px;">Modules: AI for Business, Data Analysis, Digital Transformation, Innovation & PM</div>
+                    </div>
+
+                    <div class="edu-block">
+                        <div class="edu-degree">Diploma, Innovation &amp; Project Management</div>
+                        <div class="edu-school">ENEB | 2025</div>
+                        <div class="edu-gpa">250 hours specialization</div>
+                    </div>
+
+                    <div class="edu-block">
+                        <div class="edu-degree">Spanish for Business</div>
+                        <div class="edu-school">Universidad Internacional Isabel I de Castilla / ENEB | 2025</div>
+                        <div class="edu-gpa">60 hours | 2.40 ECTS</div>
+                    </div>
+
+                    <div class="edu-block">
+                        <div class="edu-degree">BBA, Business Administration</div>
+                        <div class="edu-school">Kentsville University | Canada | 2016</div>
+                        <div class="edu-gpa">GPA: 3.90 | Distinction awarded</div>
+                    </div>
+
+                    <div class="edu-block">
+                        <div class="edu-degree">General High School Diploma (Abitur)</div>
+                        <div class="edu-school">Max-Planck-Gymnasium | Göttingen, DE | 2008</div>
+                        <div class="edu-gpa">Grade: 2.1</div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="section-label">CERTIFICATIONS</div>
+                    <div style="font-size: 9px; line-height: 1.6; color: #444;">
+                        <strong>Elements of AI</strong> (University of Helsinki) | 2024<br>
+                        <strong>Yale Financial Markets Course</strong> (Coursera with Honors, Robert J. Shiller) | 2018<br>
+                        <strong>OMR Digital Marketing School</strong> (10-part series) | 2024<br>
+                        <strong>MBA Basics</strong> (Laudius Fernstudium, Grade: „Sehr Gut Plus") | 2016<br>
+                        <strong>Sales Communication Fundamentals</strong> (Schaber Training, 16h) | 2015
+                    </div>
+                </div>
+
+                <div>
+                    <div class="section-label">REFERENCES</div>
+                    <div style="font-size: 9px; line-height: 1.7; color: #444;">
+                        <strong>Thomas Thomsen</strong><br>
+                        Bereichsleiter Außendienst<br>
+                        Barmenia Krankenversicherung AG<br><br>
+                        <strong>Jelle Verhagen</strong><br>
+                        Brand Operations Manager<br>
+                        Activate GmbH<br><br>
+                        <em>Additional references available upon request</em>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="container-page2">
+    <!-- SIDEBAR PAGE 2 -->
+    <div class="sidebar-page2">
+        <div class="name">DAANIYAL A. KHAN</div>
+        <div class="title">Sales & Distribution Enablement Leader</div>
+
+        <div style="margin-top: 40px;">
+            <div class="section-title">KEY METRICS</div>
+            <div class="sidebar-item" style="line-height: 2; color: #b8956a; font-weight: 600;">
+                ✓ 7+ Years Insurance<br>
+                ✓ 200+ Partners Managed<br>
+                ✓ 500+ Event Attendees<br>
+                ✓ 4 Direct Reports<br>
+                ✓ P&amp;L Ownership<br>
+                ✓ 3 Major Tech Projects<br>
+                ✓ €350k+ Target Comp
+            </div>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <div class="section-title">EXPERTISE AREAS</div>
+            <div style="font-size: 10px; line-height: 1.8; color: #ccc;">
+                <strong style="color: #b8956a;">Strategic:</strong> Distribution Strategy, Sales Transformation, Process Optimization, Change Leadership<br><br>
+                <strong style="color: #b8956a;">Operational:</strong> Team Building, Recruitment, Onboarding, Training &amp; Coaching<br><br>
+                <strong style="color: #b8956a;">Technology:</strong> Sales Enablement Tools, CRM/Portal Implementation, AI/KI for Sales, Data Analytics<br><br>
+                <strong style="color: #b8956a;">Industry:</strong> Insurance (Health, Life), Financial Services, SaaS Distribution
+            </div>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <div class="section-title">SPEAKING</div>
+            <div class="sidebar-item">
+                <strong style="color: #b8956a;">TEDx Speaker</strong><br>
+                <em>"The Future of Interaction: Freedom"</em><br>
+                TEDxKarlshochschule International University<br>
+                October 2023
+            </div>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <div class="section-title">COMMUNITY</div>
+            <div class="sidebar-item">
+                <strong>PREDA Foundation Partnership</strong><br>
+                Child protection &amp; education programs<br>
+                Philippines | 2023–2025
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT PAGE 2 -->
+    <div class="content-page2">
+        <div class="header-top" style="margin-bottom: 20px;">
+            <div class="header-left">
+                <h1>CAREER NARRATIVE</h1>
+                <p>Professional Journey & Strategic Positioning</p>
+            </div>
+        </div>
+
+        <div class="full-width">
+            <div>
+                <div class="section-label">CAREER TRAJECTORY</div>
+                <div class="highlight-box">
+                    <strong>Phase 1: Sales Floor Foundation (2008–2014)</strong><br>
+                    Built expertise in telesales, inside sales &amp; customer support across multiple industries. Entrepreneurial mindset demonstrated through founding PC-Werkstatt IT retail business (2013). Developed sales communication fundamentals, team coaching &amp; process discipline.
+                </div>
+
+                <div class="highlight-box">
+                    <strong>Phase 2: Sales Leadership & Branch Building (2014–2017)</strong><br>
+                    Advanced to management roles with P&amp;L responsibility. Established Hannover branch for Activate GmbH from greenfield to operational excellence. Recruited, trained &amp; managed multi-tier team structure. Demonstrated ability to scale operations while maintaining financial discipline &amp; team engagement.
+                </div>
+
+                <div class="highlight-box">
+                    <strong>Phase 3: Strategic Transformation & Digital Leadership (2018–2025)</strong><br>
+                    Transitioned to strategic advisory role within insurance industry. Evolved from individual contributor (Trainee, Digital Consultant) → Department Head (Sales Development Center, Onboarding &amp; Recruiting). Core focus: How do we scale distribution? How do we modernize sales operations?<br><br>
+                    <strong>Signature initiatives:</strong> Digital Sales Organization (DVO), BVO-Portal (500-user sales cockpit), Competence Center for Sales Development (AI/KI applications, lead management, tool adoption), standardized onboarding framework for 200+ partner network.
+                </div>
+            </div>
+
+            <div>
+                <div class="section-label">STRATEGIC POSITIONING FOR NEXT ROLE</div>
+                <div class="highlight-box">
+                    <strong>Ideal Opportunity:</strong> Director/Head of Distribution Enablement, Sales Transformation, or Partner Success (Insurance/FinServ/SaaS/B2B)<br><br>
+                    <strong>Proven Strengths:</strong>
+                    <ul style="margin-left: 15px; margin-top: 8px; font-size: 10px; line-height: 1.7;">
+                        <li><strong>Scaling Distribution:</strong> Built digital channels, managed 200+ partner ecosystems, designed onboarding frameworks for high-growth organizations</li>
+                        <li><strong>Enabling Sales Teams:</strong> Implemented sales technology (portals, CRM, analytics), trained leadership at scale, designed competency frameworks</li>
+                        <li><strong>Strategic Transformation:</strong> Advised C-suite on digitalization roadmaps, process reengineering, capability gaps &amp; innovation initiatives</li>
+                        <li><strong>Team Building:</strong> Recruited &amp; scaled teams from greenfield; demonstrated ability to develop high performers &amp; maintain engagement during transformation</li>
+                        <li><strong>Data-Driven Decision Making:</strong> Analyzed sales operations, identified bottlenecks, quantified optimization opportunities, tracked KPIs</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <strong>Preferred Working Model:</strong> Remote-first with periodic on-site engagement | Relocation flexibility (EMEA/APAC prioritized) | Flexible compensation structure (base + variable + equity welcome) | Minimum target: €350,000 netto p.a.
+                </div>
+            </div>
+
+            <div>
+                <div class="section-label">ADDITIONAL CONTEXT</div>
+                <div style="font-size: 10px; line-height: 1.7; color: #444;">
+                    <strong>Multilingual:</strong> Native German &amp; Hindi/Urdu; fluent English &amp; Spanish (business-certified 2025); basic French<br><br>
+                    <strong>Continuous Learning:</strong> Completed MBA + Master in AI for Business (2024–2025, GPA 9.53/10) while working full-time. Demonstrates commitment to staying current with market trends &amp; emerging technologies (AI/KI, digital transformation, data analytics).<br><br>
+                    <strong>Industry Expertise:</strong> 7+ years in insurance (health, life) with deep knowledge of distribution channels, regulatory compliance (IDD), partner ecosystem dynamics &amp; sales enablement best practices.<br><br>
+                    <strong>References:</strong> Available from Barmenia leadership &amp; previous employers. Prepared to discuss detailed business impact, project metrics &amp; confidential initiatives during interviews.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
