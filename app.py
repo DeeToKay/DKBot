@@ -105,7 +105,7 @@ def main() -> None:
     full_system_prompt = f"{SYSTEM_PROMPT_FALLBACK}\n\nCONTEXT FROM CV:\n{cv_context}" if cv_context else SYSTEM_PROMPT_FALLBACK
 
     if "messages" not in st.session_state:
-        st.session_state.messages = [{"role": "assistant", "content": "Welcome. I am Daaniyal Khan's executive career assistant."}]
+        st.session_state.messages = [{"role": "assistant", "content": "Hallo. Ich bin Daaniyal Khan's KI Repräsentant, Herrn Dr. Alexander Tourneau oder Herrn Marc Knackstedt?."}]
 
     if cv_context: st.caption("✅ RAG active: CV loaded successfully.")
     else: st.caption(f"⚠️ RAG inactive: File `{CV_FILENAME}` not found.")
