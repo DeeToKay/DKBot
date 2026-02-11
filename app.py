@@ -32,16 +32,18 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-SYSTEM_PROMPT_FALLBACK = """You are Daaniyal Khan's Chief of Staff speaking to recruiters and C-level leaders.
-Mission: Represent Daaniyal Khan as a strategic, commercially focused executive leader.
-Use ONLY facts from the provided CV/Context. If details are uncertain, say: "Please ask Daaniyal directly in the interview."
-Tone: Professional, concise, results-oriented.
+SYSTEM_PROMPT_FALLBACK = """Du bist Daaniyal Khans Chief of Staff und sprichst mit Recruitern und C-Level.
+Sprache: Antworte IMMER auf Deutsch (Sie-Form), auch wenn die Frage auf Englisch kommt.
+Mission: Repräsentiere Daaniyal als strategischen, kommerziell starken Executive.
+Nutze ausschließlich Fakten aus dem bereitgestellten CV-Kontext.
+Wenn Details unklar/nicht belegt sind, antworte: "Bitte klären Sie das direkt im Interview mit Daaniyal."
+Ton: Professionell, prägnant, ergebnisorientiert.
 """
 
 SUGGESTED_QUESTIONS = [
-    "What was the Digital VO Project?",
-    "How did he optimize Recruiting?",
-    "What is his leadership style?",
+    "Was war das Digital VO Projekt?",
+    "Wie hat er das Recruiting optimiert?",
+    "Was zeichnet seinen Führungsstil aus?",
 ]
 
 CV_FILENAME = "Daaniyal Khan Premium CV.html"
@@ -50,28 +52,22 @@ LOG_FILENAME = "chat_logs.csv"
 def log_interaction(role, content):
     """Speichert jede Nachricht in einer CSV-Datei."""
     try:
-        # Prüfen ob Datei existiert, sonst Header schreiben
         file_exists = os.path.exists(LOG_FILENAME)
-        
         with open(LOG_FILENAME, "a", newline="", encoding="utf-8") as f:
             writer = csv.writer(f)
             if not file_exists:
                 writer.writerow(["Timestamp", "Role", "Content"])
-            
-            # Zeitstempel + Nachricht speichern
             timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             writer.writerow([timestamp, role, content])
     except Exception as e:
         print(f"Logging error: {e}")
 
-
 def get_api_key() -> str:
-    # Hier KEIN key hardcoden!
     key = st.secrets.get("OPENAI_API_KEY") 
     if not key:
         key = os.getenv("OPENAI_API_KEY")
     if not key:
-        st.warning("Please provide an OpenAI API key.")
+        st.warning("Bitte OpenAI API Key bereitstellen.")
         key = st.sidebar.text_input("OpenAI API Key", type="password")
     return key or ""
 
@@ -103,31 +99,23 @@ def ask_gpt(client: OpenAI, messages: List[dict]) -> str:
     )
     return response.choices[0].message.content
 
-
 def render_sidebar() -> None:
     st.sidebar.markdown("## Executive Profile")
     st.sidebar.markdown(f'<div class="profile-wrap"><img src="{get_profile_image_src()}" alt="Daaniyal Khan" /></div>', unsafe_allow_html=True)
     st.sidebar.markdown("### Contact")
-    st.sidebar.markdown("- **LinkedIn:** [Daaniyal Khan](https://www.linkedin.com)")
-    st.sidebar.markdown("- **Email:** daaniyalkh@gmail.com")
-    st.sidebar.markdown("- **Webseite:** www.daaniyalkhan.com")
-        # Admin-Bereich (ganz unten in der Sidebar)
+    st.sidebar.markdown("- **LinkedIn:** [Daaniyal Khan](https://www.linkedin.com/in/daaniyal-khan)")
+    st.sidebar.markdown("- **Email:** [daaniyalkh@gmail.com](mailto:daaniyalkh@gmail.com)")
+    st.sidebar.markdown("- **Webseite:** [www.daaniyalkhan.com](https://www.daaniyalkhan.com)")
+    
     st.sidebar.markdown("---")
     with st.sidebar.expander("Admin Access"):
         password = st.text_input("Password", type="password")
-        if password == st.secrets.get("ADMIN_PASSWORD", "admin123"): # Default, falls kein Secret gesetzt
+        if password == st.secrets.get("ADMIN_PASSWORD", "admin123"):
             if os.path.exists(LOG_FILENAME):
                 with open(LOG_FILENAME, "rb") as f:
-                    st.download_button(
-                        label="Download Chat Logs",
-                        data=f,
-                        file_name="chat_logs.csv",
-                        mime="text/csv"
-                    )
+                    st.download_button("Download Logs", f, "chat_logs.csv", "text/csv")
             else:
                 st.write("No logs yet.")
-
-    
 
 def main() -> None:
     render_sidebar()
@@ -143,10 +131,13 @@ def main() -> None:
     full_system_prompt = f"{SYSTEM_PROMPT_FALLBACK}\n\nCONTEXT FROM CV:\n{cv_context}" if cv_context else SYSTEM_PROMPT_FALLBACK
 
     if "messages" not in st.session_state:
-        st.session_state.messages = [{"role": "assistant", "content": "Hallo. Ich bin Daaniyal Khan's KI Repräsentant, Herrn Dr. Alexander Tourneau oder Herrn Marc Knackstedt?."}]
+        st.session_state.messages = [{
+            "role": "assistant", 
+            "content": "Hallo. Ich bin Daaniyal Khans KI-Assistent. Fragen Sie mich gerne zu seiner Führungserfahrung, Transformationsprojekten oder dem strategischen Fit."
+        }]
 
-    if cv_context: st.caption("✅ RAG active: CV loaded successfully.")
-    else: st.caption(f"⚠️ RAG inactive: File `{CV_FILENAME}` not found.")
+    if cv_context: st.caption("✅ RAG aktiv: CV geladen.")
+    else: st.caption(f"⚠️ RAG inaktiv: Datei `{CV_FILENAME}` nicht gefunden.")
 
     cols = st.columns(3)
     for idx, q in enumerate(SUGGESTED_QUESTIONS):
@@ -155,37 +146,32 @@ def main() -> None:
     for msg in st.session_state.messages:
         with st.chat_message(msg["role"]): st.markdown(msg["content"])
 
-    prompt = st.chat_input("Ask about Daaniyal...")
+    prompt = st.chat_input("Stellen Sie Ihre Frage zu Daaniyal...")
     if st.session_state.get("pending_prompt") and not prompt: prompt = st.session_state.pop("pending_prompt")
+
     if prompt:
-        # User Message speichern
         st.session_state.messages.append({"role": "user", "content": prompt})
-        log_interaction("user", prompt)  # <--- NEU: Loggen
+        log_interaction("user", prompt)
         
         with st.chat_message("user"):
             st.markdown(prompt)
 
-        # Antwort generieren
         with st.chat_message("assistant"):
-            # ... (dein bestehender Code) ...
-            
-            # Nachdem response da ist:
-            log_interaction("assistant", response)  # <--- NEU: Loggen
-        
-        st.session_state.messages.append({"role": "assistant", "content": response})
-
-    if prompt:
-        st.session_state.messages.append({"role": "user", "content": prompt})
-        with st.chat_message("user"): st.markdown(prompt)
-        with st.chat_message("assistant"):
-            with st.spinner("Preparing..."):
+            with st.spinner("Antwort wird generiert..."):
+                response_text = ""
                 try:
-                    msgs = [{"role": "system", "content": full_system_prompt}] + [{"role": m["role"], "content": m["content"]} for m in st.session_state.messages]
-                    response = ask_gpt(client, msgs)
+                    msgs = [{"role": "system", "content": full_system_prompt}] + \
+                           [{"role": m["role"], "content": m["content"]} for m in st.session_state.messages]
+                    
+                    response_text = ask_gpt(client, msgs)
+                    log_interaction("assistant", response_text)
+                    
                 except OpenAIError as exc:
-                    response = f"API Error: {exc}"
-            st.markdown(response)
-        st.session_state.messages.append({"role": "assistant", "content": response})
+                    response_text = f"API Error: {exc}"
+            
+            st.markdown(response_text)
+        
+        st.session_state.messages.append({"role": "assistant", "content": response_text})
 
 if __name__ == "__main__":
     main()
